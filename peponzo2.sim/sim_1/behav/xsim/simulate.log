@@ -1,5 +1,2 @@
 Vivado Simulator 2018.3
 Time resolution is 1 ps
-Failure: TEST FALLITO o_done !=0 during reset
-Time: 75 ns  Iteration: 0  Process: /project_tb/test_routine  File: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/Testbenches/project_tb.vhd
-$finish called at time : 75 ns : File "C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/Testbenches/project_tb.vhd" Line 165

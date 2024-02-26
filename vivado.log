@@ -1,0 +1,22 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Mon Feb 26 17:12:31 2024
+# Process ID: 12896
+# Current directory: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12260 C:\Users\glagu\Desktop\università\PROGETTO RETI LOGICHE\peponzo\peponzo2.xpr
+# Log file: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/vivado.log
+# Journal file: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/peponzo2.xpr}
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 786.309 ; gain = 171.078
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Feb 26 17:14:09 2024...

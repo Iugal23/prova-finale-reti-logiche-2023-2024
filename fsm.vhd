@@ -28,6 +28,7 @@ signal CURRENT_STATE, NEXT_STATE: state_type;
 begin
 combin: process (CURRENT_STATE, i_start, i_add, i_k, i_j, i_mem_data)
 begin
+o_done<='0';
     case CURRENT_STATE is
         when s0 =>
             if (i_start = '1') then
