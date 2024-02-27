@@ -25,9 +25,7 @@ i_clk: in std_logic;
 i_rst: in std_logic;
 i_ec: in std_logic;
 i_k: in std_logic_vector (9 downto 0);
-i_j: in std_logic_vector (9 downto 0);
-
-o_j: out std_logic_vector (9 downto 0)
+o_j: out std_logic_vector(9 downto 0)
 );
 end component;
 
@@ -61,9 +59,7 @@ begin
        i_rst => i_rst,
        i_ec => ec,
        i_k => i_k,
-       i_j => j,
-       
-       o_j => j
+       o_j=>j
     );
     
     fsm_map: fsm port map(
