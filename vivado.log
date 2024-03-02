@@ -2,10 +2,10 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Mon Feb 26 17:12:31 2024
-# Process ID: 12896
+# Start of session at: Fri Mar  1 23:50:08 2024
+# Process ID: 7176
 # Current directory: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12260 C:\Users\glagu\Desktop\università\PROGETTO RETI LOGICHE\peponzo\peponzo2.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent17180 C:\Users\glagu\Desktop\università\PROGETTO RETI LOGICHE\peponzo\peponzo2.xpr
 # Log file: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/vivado.log
 # Journal file: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo\vivado.jou
 #-----------------------------------------------------------
@@ -16,7 +16,39 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.3/data/ip'.
-open_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 786.309 ; gain = 171.078
+open_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 793.477 ; gain = 172.684
 update_compile_order -fileset sources_1
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/peponzo2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'project_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/peponzo2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj project_tb_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/peponzo2.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 0b173bae73cb42a78a4d8cd3d108cc5f --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot project_tb_behav xil_defaultlib.project_tb -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/peponzo2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "project_tb_behav -key {Behavioral:sim_1:Functional:project_tb} -tclbatch {project_tb.tcl} -view {{C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/project_tb_behav.wcfg}} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+ERROR: [Simulator 45-7] No such file 'C:/Users/glagu/Desktop/università/PROGETTO' in the design.
+
+ERROR: [USF-XSim-62] 'simulate' step failed with errors. Please check the Tcl console or log files for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
 exit
-INFO: [Common 17-206] Exiting Vivado at Mon Feb 26 17:14:09 2024...
+INFO: [Common 17-206] Exiting Vivado at Fri Mar  1 23:51:40 2024...

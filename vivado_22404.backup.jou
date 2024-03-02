@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Mar  1 18:53:25 2024
+# Process ID: 22404
+# Current directory: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18956 C:\Users\glagu\Desktop\università\PROGETTO RETI LOGICHE\peponzo\peponzo2.xpr
+# Log file: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/vivado.log
+# Journal file: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/peponzo2.xpr}
+update_compile_order -fileset sources_1
+launch_simulation
+launch_simulation
+source project_tb.tcl
+restart
+run 1000 ns
+restart
+run 1000 ns
+close_sim
+launch_simulation
+source project_tb.tcl
+restart
+run 1000 ns
+close_sim

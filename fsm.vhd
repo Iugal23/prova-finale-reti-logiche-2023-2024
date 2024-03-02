@@ -27,12 +27,21 @@ type state_type is (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9);
 signal CURRENT_STATE, NEXT_STATE: state_type;
 begin
 
-combin: process (CURRENT_STATE, i_start, i_add, i_k, i_j, i_mem_data)
+combin: process (i_clk,i_rst,CURRENT_STATE, i_start, i_add, i_k, i_j, i_mem_data)
 begin
-o_done<='0';
-o_ec<='0';
-o_mem_en<='0';
-o_mem_we<='0';
+--o_done<='0';
+--o_ec<='0';
+--o_mem_en<='0';
+--o_mem_we<='0';
+    if(i_rst='1')then
+        CURRENT_STATE <= s0;
+        o_done <= '0';
+        o_mem_en <= '0';
+        o_mem_we <= '0';
+        o_ec <= '0'; 
+    elsif(i_clk'event and i_clk='1')then  
+         CURRENT_STATE<= NEXT_STATE; 
+    end if;
     case CURRENT_STATE is
         when s0 =>
             if (i_start = '1') then
@@ -50,7 +59,7 @@ o_mem_we<='0';
                 o_ec <= '1';
                 o_done <= '0';
                 NEXT_STATE <= s2;
-            elsif (i_start = '1' and i_j=i_k) then
+            elsif (i_start = '1' and unsigned(i_j)=unsigned(i_k)-2) then
                 o_mem_en <= '0';
                 o_mem_we <= '0';
                 o_ec <= '0';
@@ -155,37 +164,8 @@ o_mem_we<='0';
               o_mem_we <= '0';
               o_ec <= '0';
               o_done <= '0';
-              NEXT_STATE<=s0;   
-                
+              NEXT_STATE<=s0;           
     end case;
 end process;
-
-memorysync: process (i_clk, i_rst) --rst sincrono
-begin
-    if (i_clk'event and i_clk = '1') then
-        if (i_rst = '1') then
-            CURRENT_STATE <= s0;
-            o_done <= '0';
-            o_mem_en <= '0';
-            o_mem_we <= '0';
-            o_ec <= '0';
-        else 
-           CURRENT_STATE <= NEXT_STATE;
-       end if;
-    end if;
-end process;
-
---memoryasync: process (i_clk, i_rst) --rst asincrono
---begin
---    if (i_rst = '1') then
---        CURRENT_STATE <= s0;
---        o_done <= '0';
---        o_mem_en <= '0';
---        o_mem_we <= '0';
---        o_ec <= '0';
---     elsif (i_clk'event and i_clk = '1') then
---        CURRENT_STATE <= NEXT_STATE;
---    end if;
---end process;
 
 end;

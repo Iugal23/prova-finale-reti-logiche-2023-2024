@@ -24,14 +24,13 @@ process(i_clk, i_rst, i_k, i_ec,cnt)
 variable temp: unsigned (9 downto 0);
 begin
 temp:=unsigned(cnt);
-if (i_clk'event and i_clk='1') then 
-    if (i_rst='1' or cnt=i_k) then
+if (i_rst='1' or cnt=i_k) then
         cnt <= (others => '0');
-    elsif (i_ec = '1') then
+elsif (i_clk'event and i_clk='1') then 
+    if (i_ec = '1') then
         cnt <= std_logic_vector(temp + 1);
     end if;
 end if;
-
 end process;
 o_j<=cnt;
 end;
