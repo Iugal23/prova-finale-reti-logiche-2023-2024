@@ -26,8 +26,7 @@ architecture fsm_arch of fsm is
 type state_type is (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9);
 signal CURRENT_STATE, NEXT_STATE: state_type;
 begin
-
-combin: process (i_clk)--,i_rst,CURRENT_STATE, i_start, i_add, i_k, i_j, i_mem_data)
+combin: process (i_clk, NEXT_STATE, i_mem_data, i_j, i_add)
 begin
 --o_done<='0';
 --o_ec<='0';
@@ -39,6 +38,8 @@ begin
         o_mem_en <= '0';
         o_mem_we <= '0';
         o_ec <= '0'; 
+        o_mem_add <= (others => '0');
+        o_mem_data <= (others => '0');
     elsif(i_clk'event and i_clk='1')then  
          CURRENT_STATE<= NEXT_STATE; 
     end if;
@@ -49,7 +50,17 @@ begin
                 o_mem_en <= '0';
                 o_ec <= '0';
                 o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
                 NEXT_STATE <= s1;
+            else 
+                o_mem_we <= '0';
+                o_mem_en <= '0';
+                o_ec <= '0';
+                o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s0;
             end if;
         when s1 =>
             if (i_start = '1' and unsigned(i_j)=2*unsigned(i_k)) then
@@ -57,6 +68,8 @@ begin
                 o_mem_we <= '0';
                 o_ec <= '0';
                 o_done <= '1';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
                 NEXT_STATE <= s7;
             elsif (i_start = '1') then
                 o_mem_we <= '0';
@@ -64,7 +77,16 @@ begin
                 o_mem_add <= std_logic_vector(UNSIGNED(i_add)+UNSIGNED(i_j));
                 o_ec <= '1';
                 o_done <= '0';
-                NEXT_STATE <= s2;           
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s2;
+            else 
+                o_mem_we <= '0';
+                o_mem_en <= '0';
+                o_ec <= '0';
+                o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s0;
             end if;
         when s2 =>
             if (i_start = '1') then
@@ -74,6 +96,7 @@ begin
                     o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j));
                     o_ec <= '0';
                     o_done <= '0';
+                    o_mem_data <= (others => '0');
                     NEXT_STATE <= s3;
                 elsif (UNSIGNED(i_mem_data) /= 0) then
                     o_mem_we <= '1';
@@ -89,8 +112,25 @@ begin
                     o_ec <= '0';
                     o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j) - 2);
                     o_done <= '0';
+                    o_mem_data <= (others => '0');
                     NEXT_STATE <= s4;
+                else 
+                    o_mem_we <= '0';
+                    o_mem_en <= '0';
+                    o_ec <= '0';
+                    o_done <= '0';
+                    o_mem_add <= (others => '0');
+                    o_mem_data <= (others => '0');
+                    NEXT_STATE <= s0;
                 end if;
+            else 
+                o_mem_we <= '0';
+                o_mem_en <= '0';
+                o_ec <= '0';
+                o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s0;
             end if;
         when s3 =>
             if (i_start = '1') then
@@ -98,7 +138,17 @@ begin
                 o_mem_we <= '0';
                 o_ec <= '1';
                 o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
                 NEXT_STATE <= s1;
+            else 
+                o_mem_we <= '0';
+                o_mem_en <= '0';
+                o_ec <= '0';
+                o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s0;
             end if;
         when s4 =>
             if (i_start = '1' and i_mem_data = "00000000") then
@@ -106,6 +156,8 @@ begin
                 o_mem_we <= '0';
                 o_ec <= '1';
                 o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
                 NEXT_STATE <= s3;
             elsif (i_start = '1' and UNSIGNED(i_mem_data) /= 0) then
                 o_mem_en <= '1';
@@ -115,6 +167,14 @@ begin
                 o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j));
                 o_done <= '0';
                 NEXT_STATE <= s5;
+            else 
+                o_mem_we <= '0';
+                o_mem_en <= '0';
+                o_ec <= '0';
+                o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s0;
             end if;
         when s5 =>
             if (i_start = '1') then
@@ -123,7 +183,16 @@ begin
                 o_ec <= '0';
                 o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j) - 3);
                 o_done <= '0';
+                o_mem_data <= (others => '0');
                 NEXT_STATE <= s6;
+            else 
+                o_mem_we <= '0';
+                o_mem_en <= '0';
+                o_ec <= '0';
+                o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s0;
             end if;
         when s6 =>
             if (i_start = '1') then
@@ -134,6 +203,14 @@ begin
                 o_ec <= '1';
                 o_done <= '0';
                 NEXT_STATE <= s1;
+            else 
+                o_mem_we <= '0';
+                o_mem_en <= '0';
+                o_ec <= '0';
+                o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s0;            
             end if;
         when s7 =>
             if (i_start = '0') then
@@ -141,7 +218,17 @@ begin
                 o_mem_we <= '0';
                 o_ec <= '0';
                 o_done <= '1';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
                 NEXT_STATE <= s8;
+            else
+                o_mem_we <= '0';
+                o_mem_en <= '0';
+                o_ec <= '0';
+                o_done <= '1';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s0;
             end if;
         when s8 =>
             if (i_start = '0') then
@@ -149,7 +236,17 @@ begin
                 o_mem_we <= '0';
                 o_ec <= '0';
                 o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
                 NEXT_STATE <= s9;
+            else
+                o_mem_we <= '0';
+                o_mem_en <= '0';
+                o_ec <= '0';
+                o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s0;
             end if;
         when s9 =>
             if (i_start = '1') then
@@ -157,14 +254,18 @@ begin
                 o_mem_we <= '0';
                 o_ec <= '0';
                 o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
                 NEXT_STATE <= s1;
-            end if;
-         when others=>
-              o_mem_en <= '0';
-              o_mem_we <= '0';
-              o_ec <= '0';
-              o_done <= '0';
-              NEXT_STATE<=s0;           
+            else
+                o_mem_we <= '0';
+                o_mem_en <= '0';
+                o_ec <= '0';
+                o_done <= '0';
+                o_mem_add <= (others => '0');
+                o_mem_data <= (others => '0');
+                NEXT_STATE <= s0;
+            end if;        
     end case;
 end process;
 

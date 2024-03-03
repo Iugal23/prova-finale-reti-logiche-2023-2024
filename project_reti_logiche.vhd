@@ -48,7 +48,6 @@ o_mem_data: out std_logic_vector (7 downto 0)
 );
 end component;
 
-
 signal ec : std_logic;
 signal j : std_logic_vector (9 downto 0);
 
@@ -78,4 +77,5 @@ begin
         o_mem_add => o_mem_addr,
         o_mem_data => o_mem_data
     );
+
 end;
