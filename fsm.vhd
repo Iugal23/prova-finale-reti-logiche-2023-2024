@@ -27,12 +27,21 @@ type state_type is (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9);
 signal CURRENT_STATE, NEXT_STATE: state_type;
 begin
 
-combin: process (CURRENT_STATE, i_start, i_add, i_k, i_j, i_mem_data)
+combin: process (i_clk)--,i_rst,CURRENT_STATE, i_start, i_add, i_k, i_j, i_mem_data)
 begin
-o_done<='0';
-o_ec<='0';
-o_mem_en<='0';
-o_mem_we<='0';
+--o_done<='0';
+--o_ec<='0';
+--o_mem_en<='0';
+--o_mem_we<='0';
+    if(i_rst='1')then
+        CURRENT_STATE <= s0;
+        o_done <= '0';
+        o_mem_en <= '0';
+        o_mem_we <= '0';
+        o_ec <= '0'; 
+    elsif(i_clk'event and i_clk='1')then  
+         CURRENT_STATE<= NEXT_STATE; 
+    end if;
     case CURRENT_STATE is
         when s0 =>
             if (i_start = '1') then
@@ -43,19 +52,19 @@ o_mem_we<='0';
                 NEXT_STATE <= s1;
             end if;
         when s1 =>
-            if (i_start = '1') then
-                o_mem_we <= '0';
-                o_mem_en <= '1';
-                o_mem_add <= std_logic_vector(UNSIGNED(i_add)+UNSIGNED(i_j));
-                o_ec <= '1';
-                o_done <= '0';
-                NEXT_STATE <= s2;
-            elsif (i_start = '1' and i_j=i_k) then
+            if (i_start = '1' and unsigned(i_j)=2*unsigned(i_k)) then
                 o_mem_en <= '0';
                 o_mem_we <= '0';
                 o_ec <= '0';
                 o_done <= '1';
                 NEXT_STATE <= s7;
+            elsif (i_start = '1') then
+                o_mem_we <= '0';
+                o_mem_en <= '1';
+                o_mem_add <= std_logic_vector(UNSIGNED(i_add)+UNSIGNED(i_j));
+                o_ec <= '1';
+                o_done <= '0';
+                NEXT_STATE <= s2;           
             end if;
         when s2 =>
             if (i_start = '1') then
@@ -78,7 +87,7 @@ o_mem_we<='0';
                     o_mem_en <= '1';
                     o_mem_we <= '0';
                     o_ec <= '0';
-                    o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j) - 1);
+                    o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j) - 2);
                     o_done <= '0';
                     NEXT_STATE <= s4;
                 end if;
@@ -103,7 +112,7 @@ o_mem_we<='0';
                 o_mem_we <= '1';
                 o_ec <= '0';
                 o_mem_data <= std_logic_vector(UNSIGNED(i_mem_data) - 1);
-                o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j) + 1);
+                o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j));
                 o_done <= '0';
                 NEXT_STATE <= s5;
             end if;
@@ -112,19 +121,19 @@ o_mem_we<='0';
                 o_mem_we <= '0';
                 o_mem_en <= '1';
                 o_ec <= '0';
-                o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j) - 2);
+                o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j) - 3);
                 o_done <= '0';
                 NEXT_STATE <= s6;
             end if;
         when s6 =>
             if (i_start = '1') then
-                o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j));
+                o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j) - 1);
                 o_mem_data <= i_mem_data;
                 o_mem_we <= '1';
                 o_mem_en <= '1';
                 o_ec <= '1';
                 o_done <= '0';
-                NEXT_STATE <= s3;
+                NEXT_STATE <= s1;
             end if;
         when s7 =>
             if (i_start = '0') then
@@ -155,37 +164,8 @@ o_mem_we<='0';
               o_mem_we <= '0';
               o_ec <= '0';
               o_done <= '0';
-              NEXT_STATE<=s0;   
-                
+              NEXT_STATE<=s0;           
     end case;
 end process;
-
-memorysync: process (i_clk, i_rst) --rst sincrono
-begin
-    if (i_clk'event and i_clk = '1') then
-        if (i_rst = '1') then
-            CURRENT_STATE <= s0;
-            o_done <= '0';
-            o_mem_en <= '0';
-            o_mem_we <= '0';
-            o_ec <= '0';
-        else 
-           CURRENT_STATE <= NEXT_STATE;
-       end if;
-    end if;
-end process;
-
---memoryasync: process (i_clk, i_rst) --rst asincrono
---begin
---    if (i_rst = '1') then
---        CURRENT_STATE <= s0;
---        o_done <= '0';
---        o_mem_en <= '0';
---        o_mem_we <= '0';
---        o_ec <= '0';
---     elsif (i_clk'event and i_clk = '1') then
---        CURRENT_STATE <= NEXT_STATE;
---    end if;
---end process;
 
 end;

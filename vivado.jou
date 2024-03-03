@@ -1,14 +1,103 @@
 #-----------------------------------------------------------
-# Vivado v2018.3 (64-bit)
-# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
-# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Mon Feb 26 17:12:31 2024
-# Process ID: 12896
-# Current directory: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12260 C:\Users\glagu\Desktop\università\PROGETTO RETI LOGICHE\peponzo\peponzo2.xpr
-# Log file: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/vivado.log
-# Journal file: C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo\vivado.jou
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Wed Feb 28 17:21:34 2024
+# Process ID: 6992
+# Current directory: C:/Users/loisu/Desktop/repositories/peponzo
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24436 C:\Users\loisu\Desktop\repositories\peponzo\peponzo2.xpr
+# Log file: C:/Users/loisu/Desktop/repositories/peponzo/vivado.log
+# Journal file: C:/Users/loisu/Desktop/repositories/peponzo\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project {C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/peponzo2.xpr}
-update_compile_order -fileset sources_1
+open_project C:/Users/loisu/Desktop/repositories/peponzo/peponzo2.xpr
+open_project C:/Users/loisu/Desktop/scuola/universita/terzoanno/peponzo2/peponzo2.xpr
+launch_simulation
+launch_simulation
+launch_simulation
+source project_tb.tcl
+restart
+run 10 us
+restart
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run all
+close_sim
+launch_simulation
+source project_tb.tcl
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_utilization
+report_timing
+close_sim
+launch_simulation
+source project_tb.tcl
+close_sim
+launch_simulation
+source project_tb.tcl
+close_sim
+launch_simulation
+source project_tb.tcl
+set_property display_limit 524288
+set_property display_limit 524288 [current_wave_config]
+close_sim
+launch_simulation
+source project_tb.tcl
+set_property display_limit 524288 [current_wave_config]
+close_sim
