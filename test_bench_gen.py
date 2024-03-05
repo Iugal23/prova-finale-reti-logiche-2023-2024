@@ -32,8 +32,8 @@ NUMBER_OF_TB=1000
 K,scenario_input=gen_scenario_input()
 
 for i in range(0,NUMBER_OF_TB):
-    template=open("Testbenches\\project_tb.txt","r")
-    new_tb=open(f"Testbenches\\project_tb_{i}.txt","w")
+    template=open("Testbenches\\project_tb.vhd","r")
+    new_tb=open(f"Testbenches\\project_tb_{i}.vhd","w")
     K,scenario_input=gen_scenario_input()
     scenario_full=gen_scenario_full(scenario_input)
 
