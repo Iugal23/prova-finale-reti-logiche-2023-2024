@@ -26,7 +26,7 @@ architecture fsm_arch of fsm is
 type state_type is (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9);
 signal CURRENT_STATE, NEXT_STATE: state_type;
 begin
-combin: process (i_clk, NEXT_STATE, i_mem_data, i_j, i_add)
+combin: process (i_clk, i_rst,CURRENT_STATE,NEXT_STATE,i_start,i_k,i_mem_data, i_j, i_add)
 begin
 --o_done<='0';
 --o_ec<='0';

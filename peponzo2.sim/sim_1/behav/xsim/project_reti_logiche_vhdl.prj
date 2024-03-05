@@ -1,8 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../contatore.vhd" \
-"../../../../fsm.vhd" \
-"../../../../project_reti_logiche.vhd" \
-
-# Do not sort compile order
-nosort

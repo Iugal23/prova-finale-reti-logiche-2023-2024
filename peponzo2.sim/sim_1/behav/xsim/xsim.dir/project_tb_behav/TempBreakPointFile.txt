@@ -1,2 +1,0 @@
-Breakpoint File Version 1.0
-55 true C:/Users/glagu/Desktop/università/PROGETTO RETI LOGICHE/peponzo/fsm.vhd

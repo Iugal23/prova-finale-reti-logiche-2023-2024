@@ -20,7 +20,7 @@ architecture contatore_arch of contatore is
 
 begin
 
-process(i_clk)
+process(i_clk,i_rst,cnt,i_k)
 variable temp: unsigned (9 downto 0);
 begin
 temp:=unsigned(cnt);
