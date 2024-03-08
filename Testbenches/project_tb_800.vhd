@@ -5,10 +5,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 
-entity project_tb is
-end project_tb;
+entity project_tb_800 is
+end project_tb_800;
 
-architecture project_tb_arch of project_tb is
+architecture project_tb_arch_800 of project_tb_800 is
     constant CLOCK_PERIOD : time := 20 ns;
     signal tb_clk : std_logic := '0';
     signal tb_rst, tb_start, tb_done : std_logic;
@@ -26,8 +26,8 @@ architecture project_tb_arch of project_tb is
 constant SCENARIO_LENGTH : integer := 29;
     type scenario_type is array (0 to SCENARIO_LENGTH*2-1) of integer;
 
-signal scenario_input : scenario_type := (133,0,165,0,166,0,0,0,92,0,190,0,79,0,170,0,83,0,45,0,83,0,119,0,165,0,0,0,81,0,14,0,121,0,156,0,18,0,224,0,118,0,28,0,218,0,160,0,0,0,237,0,0,0,217,0,180,0);
-signal scenario_full  : scenario_type := (133,31,165,31,166,31,166,30,92,31,190,31,79,31,170,31,83,31,45,31,83,31,119,31,165,31,165,30,81,31,14,31,121,31,156,31,18,31,224,31,118,31,28,31,218,31,160,31,160,30,237,31,237,30,217,31,180,31);
+signal scenario_input : scenario_type := (5,0,149,0,0,0,119,0,142,0,97,0,222,0,239,0,0,0,0,0,68,0,77,0,13,0,145,0,0,0,150,0,187,0,125,0,49,0,248,0,193,0,73,0,0,0,43,0,240,0,52,0,0,0,0,0,156,0);
+signal scenario_full  : scenario_type := (5,31,149,31,149,30,119,31,142,31,97,31,222,31,239,31,239,30,239,29,68,31,77,31,13,31,145,31,145,30,150,31,187,31,125,31,49,31,248,31,193,31,73,31,73,30,43,31,240,31,52,31,52,30,52,29,156,31);
 
     signal memory_control : std_logic := '0';
     

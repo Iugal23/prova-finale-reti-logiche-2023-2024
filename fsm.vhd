@@ -10,7 +10,7 @@ i_clk: in std_logic;
 i_rst: in std_logic;
 i_add: in std_logic_vector (15 downto 0);
 i_k: in std_logic_vector (9 downto 0);
-i_j: in std_logic_vector (9 downto 0);
+i_j: in std_logic_vector (10 downto 0);
 i_mem_data: in std_logic_vector (7 downto 0);
 
 o_done: out std_logic;
@@ -26,7 +26,7 @@ architecture fsm_arch of fsm is
 type state_type is (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9);
 signal CURRENT_STATE, NEXT_STATE: state_type;
 begin
-combin: process (i_clk, i_rst,CURRENT_STATE,NEXT_STATE,i_start,i_k,i_mem_data, i_j, i_add)
+combin: process (i_clk, i_rst,CURRENT_STATE,i_start,i_k,i_mem_data, i_j, i_add)
 begin
 --o_done<='0';
 --o_ec<='0';
@@ -90,7 +90,7 @@ begin
             end if;
         when s2 =>
             if (i_start = '1') then
-                if (i_mem_data = "00000000" and i_j = "0000000001") then 
+                if (i_mem_data = "00000000" and i_j = "00000000001") then 
                     o_mem_we <= '1';
                     o_mem_en <= '1';
                     o_mem_add <= std_logic_vector(UNSIGNED(i_add) + UNSIGNED(i_j));
@@ -154,7 +154,7 @@ begin
             if (i_start = '1' and i_mem_data = "00000000") then
                 o_mem_en <= '0';
                 o_mem_we <= '0';
-                o_ec <= '1';
+                o_ec <= '0';
                 o_done <= '0';
                 o_mem_add <= (others => '0');
                 o_mem_data <= (others => '0');

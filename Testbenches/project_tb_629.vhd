@@ -5,10 +5,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 
-entity project_tb is
-end project_tb;
+entity project_tb_629 is
+end project_tb_629;
 
-architecture project_tb_arch of project_tb is
+architecture project_tb_arch_629 of project_tb_629 is
     constant CLOCK_PERIOD : time := 20 ns;
     signal tb_clk : std_logic := '0';
     signal tb_rst, tb_start, tb_done : std_logic;
@@ -23,11 +23,11 @@ architecture project_tb_arch of project_tb is
     type ram_type is array (65535 downto 0) of std_logic_vector(7 downto 0);
     signal RAM : ram_type := (OTHERS => "00000000");
 
-constant SCENARIO_LENGTH : integer := 69;
+constant SCENARIO_LENGTH : integer := 19;
     type scenario_type is array (0 to SCENARIO_LENGTH*2-1) of integer;
 
-signal scenario_input : scenario_type := (0,0,0,0,34,0,77,0,149,0,0,0,0,0,55,0,96,0,121,0,159,0,51,0,142,0,181,0,186,0,109,0,52,0,89,0,23,0,52,0,131,0,48,0,248,0,26,0,64,0,0,0,164,0,72,0,189,0,65,0,165,0,217,0,125,0,0,0,176,0,226,0,84,0,91,0,214,0,0,0,1,0,236,0,46,0,0,0,64,0,0,0,161,0,176,0,183,0,211,0,0,0,25,0,166,0,89,0,35,0,167,0,0,0,0,0,156,0,208,0,218,0,232,0,73,0,111,0,0,0,134,0,150,0,0,0,228,0);
-signal scenario_full  : scenario_type := (0,0,0,0,34,31,77,31,149,31,149,30,149,29,55,31,96,31,121,31,159,31,51,31,142,31,181,31,186,31,109,31,52,31,89,31,23,31,52,31,131,31,48,31,248,31,26,31,64,31,64,30,164,31,72,31,189,31,65,31,165,31,217,31,125,31,125,30,176,31,226,31,84,31,91,31,214,31,214,30,1,31,236,31,46,31,46,30,64,31,64,30,161,31,176,31,183,31,211,31,211,30,25,31,166,31,89,31,35,31,167,31,167,30,167,29,156,31,208,31,218,31,232,31,73,31,111,31,111,30,134,31,150,31,150,30,228,31);
+signal scenario_input : scenario_type := (214,0,147,0,6,0,61,0,244,0,96,0,0,0,230,0,52,0,0,0,195,0,19,0,155,0,0,0,133,0,114,0,114,0,76,0,137,0);
+signal scenario_full  : scenario_type := (214,31,147,31,6,31,61,31,244,31,96,31,96,30,230,31,52,31,52,30,195,31,19,31,155,31,155,30,133,31,114,31,114,31,76,31,137,31);
 
     signal memory_control : std_logic := '0';
     

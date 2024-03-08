@@ -5,10 +5,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 
-entity project_tb is
-end project_tb;
+entity project_tb_102 is
+end project_tb_102;
 
-architecture project_tb_arch of project_tb is
+architecture project_tb_arch_102 of project_tb_102 is
     constant CLOCK_PERIOD : time := 20 ns;
     signal tb_clk : std_logic := '0';
     signal tb_rst, tb_start, tb_done : std_logic;
@@ -23,11 +23,11 @@ architecture project_tb_arch of project_tb is
     type ram_type is array (65535 downto 0) of std_logic_vector(7 downto 0);
     signal RAM : ram_type := (OTHERS => "00000000");
 
-constant SCENARIO_LENGTH : integer := 45;
+constant SCENARIO_LENGTH : integer := 54;
     type scenario_type is array (0 to SCENARIO_LENGTH*2-1) of integer;
 
-signal scenario_input : scenario_type := (26,0,227,0,83,0,123,0,0,0,208,0,0,0,216,0,0,0,146,0,10,0,0,0,85,0,107,0,84,0,66,0,117,0,56,0,31,0,38,0,255,0,132,0,34,0,72,0,126,0,0,0,44,0,210,0,112,0,0,0,0,0,133,0,102,0,211,0,221,0,0,0,61,0,251,0,0,0,28,0,0,0,0,0,134,0,0,0,0,0);
-signal scenario_full  : scenario_type := (26,31,227,31,83,31,123,31,123,30,208,31,208,30,216,31,216,30,146,31,10,31,10,30,85,31,107,31,84,31,66,31,117,31,56,31,31,31,38,31,255,31,132,31,34,31,72,31,126,31,126,30,44,31,210,31,112,31,112,30,112,29,133,31,102,31,211,31,221,31,221,30,61,31,251,31,251,30,28,31,28,30,28,29,134,31,134,30,134,29);
+signal scenario_input : scenario_type := (35,0,9,0,191,0,0,0,116,0,136,0,234,0,37,0,150,0,231,0,165,0,11,0,206,0,20,0,8,0,113,0,129,0,77,0,0,0,25,0,0,0,38,0,104,0,0,0,239,0,240,0,244,0,226,0,216,0,28,0,103,0,213,0,191,0,252,0,230,0,182,0,203,0,249,0,41,0,120,0,0,0,162,0,0,0,200,0,237,0,0,0,111,0,69,0,168,0,207,0,84,0,0,0,213,0,0,0);
+signal scenario_full  : scenario_type := (35,31,9,31,191,31,191,30,116,31,136,31,234,31,37,31,150,31,231,31,165,31,11,31,206,31,20,31,8,31,113,31,129,31,77,31,77,30,25,31,25,30,38,31,104,31,104,30,239,31,240,31,244,31,226,31,216,31,28,31,103,31,213,31,191,31,252,31,230,31,182,31,203,31,249,31,41,31,120,31,120,30,162,31,162,30,200,31,237,31,237,30,111,31,69,31,168,31,207,31,84,31,84,30,213,31,213,30);
 
     signal memory_control : std_logic := '0';
     

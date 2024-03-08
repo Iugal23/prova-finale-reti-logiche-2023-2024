@@ -10,6 +10,7 @@ def gen_scenario_input():
             scenario_input.append(random.randint(0,255))
         scenario_input.append(0)
     return K,scenario_input
+
 def gen_scenario_full(scenario_input):
     last_value=0
     credibility=0
@@ -30,15 +31,26 @@ def gen_scenario_full(scenario_input):
     return scenario_full
 NUMBER_OF_TB=1000
 K,scenario_input=gen_scenario_input()
+print(K,scenario_input)
+print(gen_scenario_full(scenario_input))
 
+
+exit
 for i in range(0,NUMBER_OF_TB):
     template=open("Testbenches\\project_tb.vhd","r")
     new_tb=open(f"Testbenches\\project_tb_{i}.vhd","w")
     K,scenario_input=gen_scenario_input()
     scenario_full=gen_scenario_full(scenario_input)
 
+
     for line in template :
-        if("constant SCENARIO_LENGTH" in line):
+        if(f"entity project_tb" in line):
+            new_line=f"entity project_tb_{i} is\n"
+        elif(f"end project_tb"in line):
+            new_line=f"end project_tb_{i};\n"
+        elif("architecture project_tb_arch" in line):
+            new_line=f"architecture project_tb_arch_{i} of project_tb_{i} is\n"
+        elif("constant SCENARIO_LENGTH" in line):
             new_line=f"constant SCENARIO_LENGTH : integer := {K};\n"
         elif("signal scenario_input" in line):
             new_line="signal scenario_input : scenario_type := ("+",".join(map(str,scenario_input))+");\n"
