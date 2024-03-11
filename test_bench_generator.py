@@ -29,13 +29,10 @@ def gen_scenario_full(scenario_input):
                 scenario_full.append(last_value)
             scenario_full.append(credibility)
     return scenario_full
+
+
 NUMBER_OF_TB=1000
-K,scenario_input=gen_scenario_input()
-print(K,scenario_input)
-print(gen_scenario_full(scenario_input))
 
-
-exit
 for i in range(0,NUMBER_OF_TB):
     template=open("Testbenches\\project_tb.vhd","r")
     new_tb=open(f"Testbenches\\project_tb_{i}.vhd","w")
@@ -53,9 +50,9 @@ for i in range(0,NUMBER_OF_TB):
         elif("constant SCENARIO_LENGTH" in line):
             new_line=f"constant SCENARIO_LENGTH : integer := {K};\n"
         elif("signal scenario_input" in line):
-            new_line="signal scenario_input : scenario_type := ("+",".join(map(str,scenario_input))+");\n"
+            new_line="signal scenario_input : scenario_type := (" + ",".join(map(str,scenario_input))+");\n"
         elif("signal scenario_full" in line): 
-            new_line="signal scenario_full  : scenario_type := ("+",".join(map(str,scenario_full))+");\n"
+            new_line="signal scenario_full  : scenario_type := (" + ",".join(map(str,scenario_full))+");\n"
         else:
             new_line=line  
         new_tb.write(new_line)
