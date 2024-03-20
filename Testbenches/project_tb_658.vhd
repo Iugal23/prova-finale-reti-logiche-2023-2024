@@ -24,10 +24,10 @@ architecture project_tb_arch_658 of project_tb_658 is
     signal RAM : ram_type := (OTHERS => "00000000");
 
 constant SCENARIO_LENGTH : integer := 0;
-    type scenario_type is array (0 to SCENARIO_LENGTH*2-1) of integer;
+    type scenario_type is array (0 to 1) of integer;
 
-signal scenario_input : scenario_type := ();
-signal scenario_full  : scenario_type := ();
+signal scenario_input : scenario_type := (128,0);
+signal scenario_full  : scenario_type := (128,0);
 
     signal memory_control : std_logic := '0';
     
