@@ -7,3 +7,5 @@
 **Docente:** Fabio Salice
 
 ***Valutazione***: 25
+
+*La documentazione del progetto si può trovare [qui](https://github.com/Iugal23/peponzo/blob/main/Report%20Reti%20Logiche.pdf)*
