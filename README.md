@@ -1,25 +1,9 @@
-# peponzo
-vivado -mode tcl 
-open_project project_reti_logiche.xpr
+## Progetto Reti Logiche A.A. 2023-2024
 
-launch_simulation -mode post-synthesis -type functional
+**Studenti:** 
+- Lorenzo Meroi
+- Giuseppe LaGuardia
 
-set_property top project_tb_109 [get_filesets sim_1]
+**Docente:** Fabio Salice
 
-check:
-
-364
-
-
-
-996-1000
-
-
-
-
-
-
-
-
-
-
+***Valutazione***: 25
