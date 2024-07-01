@@ -2,7 +2,7 @@
 
 **Studenti:** 
 - Lorenzo Meroi
-- Giuseppe LaGuardia
+- Giuseppe Laguardia
 
 **Docente:** Fabio Salice
 
